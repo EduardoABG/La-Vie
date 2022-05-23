@@ -13,8 +13,8 @@
   "description": "Projeto do Hands ON 3 da XP42",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "nodemon --watch src src/app.js"
   },
   "repository": {
     "type": "git",
