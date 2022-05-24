@@ -13,12 +13,14 @@ const authLoginValidator = require("../validators/auth/login");
 
 router.get("/", HomeController.index);
 
+router.get("/psicologos", PsicologoController.index);
+router.get("/psicologos/:id", PsicologoController.show);
+router.post("/psicologos", PsicologoController.store);
+router.put("/psicologos/:id", PsicologoController.update);
+router.delete("/psicologos/:id", PsicologoController.destroy);
 
 router.get("/atendimentos", AtendimentoController.index);
-router.get("/atendimentos/:id",  AtendimentoController.show);
+router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
-
-
-
 
 module.exports = router;

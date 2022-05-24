@@ -2,8 +2,8 @@ const Atendimento = require("./Atendimento");
 const Psicologo = require("./Psicologo");
 const Paciente = require("./Paciente");
 
-// Atendimento.hasMany(Psicologo);
-// .hasOne(Endereco);
+//Atendimento.hasOne(Psicologo);
+//Atendimento.hasOne(Paciente);
 
 // Endereco.belongsTo(Cliente, {
 //   foreignKey: "cliente_codigo",
