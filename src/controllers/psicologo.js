@@ -30,15 +30,36 @@ const PsicologoController = {
 
     res.json(novoPsicologo);
   },
-  update: (req, res) => {
+  update: async(req, res) => {
     const { id } = req.params;
+    const { nome, email, senha, apresentacao = [] } = req.body;
+    const psicologoAtualizado = await Psicologo.update(
+      {
+      nome,
+      email,
+      senha,
+      apresentacao,
+      },
+      {
+        where: {
+          id,
+        },
+      },
+    );
 
     res.json({
       id,
       ...(req.body || {}),
+
     });
   },
-  destroy: (req, res) => {
+  destroy: async (req, res) => {
+    const { id } = req.params;
+    await Psicologo.destroy({
+      where: {
+        id,
+      },
+    });
     res.status(204).send("");
   },
 };

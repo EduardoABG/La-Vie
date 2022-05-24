@@ -19,6 +19,13 @@ router.post("/psicologos", PsicologoController.store);
 router.put("/psicologos/:id", PsicologoController.update);
 router.delete("/psicologos/:id", PsicologoController.destroy);
 
+router.get("/pacientes", PacienteController.index);
+router.get("/pacientes/:id", PacienteController.show);
+router.post("/pacientes", PacienteController.store);
+router.put("/pacientes/:id", PacienteController.update);
+router.delete("/pacientes/:id", PacienteController.destroy);
+
+
 router.get("/atendimentos", AtendimentoController.index);
 router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
