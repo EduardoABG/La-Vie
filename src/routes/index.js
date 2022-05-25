@@ -5,7 +5,6 @@ const HomeController = require("../controllers/home");
 const AtendimentoController = require("../controllers/atendimento");
 const PacienteController = require("../controllers/paciente");
 const PsicologoController = require("../controllers/psicologo");
-const OrderController = require("../controllers/order");
 const AuthController = require("../controllers/auth");
 
 const authRegisterValidator = require("../validators/auth/register");
@@ -29,5 +28,12 @@ router.delete("/pacientes/:id", PacienteController.destroy);
 router.get("/atendimentos", AtendimentoController.index);
 router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
+
+const authRegisterValidator = require("../validators/auth/register");
+const authLoginValidator = require("../validators/auth/login");
+
+const pacienteValidator = require("../validators/paciente");
+const psicologoValidator = require("../validators/psicologo");
+const atendimentoValidator = require("../validators/atendimento");
 
 module.exports = router;

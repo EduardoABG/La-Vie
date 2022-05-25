@@ -7,7 +7,7 @@ const AtendimentoController = {
     res.json(allAtendimentos);
   },
   store: async (req, res) => {
-    const { paciente_id, data_atendimento, observacao = [] } = req.body;
+    const { paciente_id, data_atendimento, observacao } = req.body;
     const novoAtendimento = await Atendimento.create({
       paciente_id,
       data_atendimento,
@@ -15,7 +15,6 @@ const AtendimentoController = {
     });
 
     res.json(novoAtendimento);
-
   },
   show: async (req, res) => {
     //Falta criar a exceção para a senha não aparecer

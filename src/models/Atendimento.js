@@ -24,17 +24,15 @@ const Atendimento = db.define(
       type: DataTypes.INTEGER,
       References: {
         model: Psicologo,
-        key: "psicologo_id",
+        key: "id",
       },
-      unique: true,
     },
     paciente_id: {
       type: DataTypes.INTEGER,
       References: {
         model: Paciente,
-        key: "paciente_id",
+        key: "id",
       },
-      unique: true,
     },
   },
   { tableName: "atendimento", timestamps: false, underscored: true }
