@@ -16,7 +16,7 @@ const PacienteController = {
     }
 
     res.status(404).json({
-      message: "Paciente não encontrado",
+      message: "id não encontrado",
     });
   },
   store: async (req, res) => {
@@ -26,8 +26,11 @@ const PacienteController = {
       email,
       data_nascimento,
     });
+    if (novoPaciente) {
+      return res.status(201).json(novoPaciente);
+    }
 
-    res.json(novoPaciente);
+    res.status(400);
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -45,19 +48,28 @@ const PacienteController = {
       }
     );
 
-    res.json({
-      id,
-      ...(req.body || {}),
-    });
+    if (pacienteAtualizado) {
+      return res.json({
+        id,
+        ...(req.body || {}),
+      });
+    }
+
+    res.status(400);
   },
   destroy: async (req, res) => {
     const { id } = req.params;
-    await Paciente.destroy({
+    const deletarPaciente = await Paciente.destroy({
       where: {
         id,
       },
     });
-    res.status(204).send("");
+    if (deletarPaciente) {
+      return res.status(204).send("");
+    }
+    res.status(404).json({
+      message: "id não encontrado"
+    });
   },
 };
 

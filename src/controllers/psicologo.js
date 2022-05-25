@@ -16,7 +16,7 @@ const PsicologoController = {
     }
 
     res.status(404).json({
-      message: "Psicologo não encontrado",
+      message: "id não encontrado",
     });
   },
   store: async (req, res) => {
@@ -27,40 +27,52 @@ const PsicologoController = {
       senha,
       apresentacao,
     });
+    if (novoPsicologo) {
+      return res.status(201).json(novoPsicologo);
+    }
 
-    res.json(novoPsicologo);
+    res.status(400);
   },
-  update: async(req, res) => {
+  update: async (req, res) => {
     const { id } = req.params;
     const { nome, email, senha, apresentacao = [] } = req.body;
     const psicologoAtualizado = await Psicologo.update(
       {
-      nome,
-      email,
-      senha,
-      apresentacao,
+        nome,
+        email,
+        senha,
+        apresentacao,
       },
       {
         where: {
           id,
         },
-      },
+      }
     );
 
-    res.json({
-      id,
-      ...(req.body || {}),
+    if (psicologoAtualizado) {
+      return res.json({
+        id,
+        ...(req.body || {}),
+      });
+    }
 
-    });
+    res.status(400);
   },
   destroy: async (req, res) => {
     const { id } = req.params;
-    await Psicologo.destroy({
+    const deletarPsicologo = await Psicologo.destroy({
       where: {
         id,
       },
     });
-    res.status(204).send("");
+
+    if (deletarPsicologo) {
+      return res.status(204).send("");
+    }
+    res.status(404).json({
+      message: "id não encontrado"
+    });
   },
 };
 
