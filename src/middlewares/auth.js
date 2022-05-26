@@ -1,3 +1,11 @@
+const expressJWT = require("express-jwt");
+const secret = require("../configs/secret");
+
+module.exports = expressJWT({
+  secret: secret.key,
+  algorithms: ["HS256"],  
+});
+
 const { Psicologo } = require("../models");
 
 module.exports = async (req, res, next) => {
