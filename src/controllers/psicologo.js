@@ -20,7 +20,7 @@ const PsicologoController = {
     });
   },
   store: async (req, res) => {
-    const { nome, email, senha, apresentacao } = req.body;
+    const { nome, email, senha, apresentacao = [] } = req.body;
     const novoPsicologo = await Psicologo.create({
       nome,
       email,

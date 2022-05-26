@@ -7,7 +7,7 @@ const AtendimentoController = {
     res.json(allAtendimentos);
   },
   store: async (req, res) => {
-    const { paciente_id, data_atendimento, observacao } = req.body;
+    const { paciente_id, data_atendimento, observacao = [] } = req.body;
     const novoAtendimento = await Atendimento.create({
       paciente_id,
       data_atendimento,
