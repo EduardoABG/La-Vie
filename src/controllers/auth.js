@@ -1,33 +1,30 @@
-const { Psicologo } = require("../models");
+const { Psicologo } = require("../models/Psicologo");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = require("../configs/secret");
 
-const AuthController = {
+const authController = {
   async login(req, res){
     const { email, senha } = req.body
-    const usuario = await Psicologo.findOne({
+    const psicologo = await Psicologo.findOne({
       where:{
         email,
       },
     });
 
-    if(!usuario){
-      return res.status(400).json("Email não cadastrado");
-    }
-    if(bcrypt.compareSync(senha, usuario.senha)){
-      return res.status(401).json("Senha inválida");
+    if(!psicologo || !bcrypt.compareSync(senha, psicologo.senha)){
+      return res.status(401).json("“E-mail ou senha inválido, verifique e tente novamente”");
     }
 
     const token = jwt.sign({ 
-      id: usuario.id, 
-      email: usuario.email, 
-      nome: usuario.nome,
+      id: psicologo.id, 
+      email: psicologo.email, 
+      nome: psicologo.nome,
       userType: 'user',
     });
     secret.key;
-    return res.json("Logado");
+    return res.json(token);
   },
 };
 
-module.exports = AuthController;
+module.exports = authController;
