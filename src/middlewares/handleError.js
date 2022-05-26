@@ -1,6 +1,6 @@
 const { UnauthorizedError } = require("express-jwt");
 const { ValidationError } = require("express-validation");
-const { ValidationError } = require("sequelize/types");
+//const { ValidationError } = require("sequelize/types");
 
 module.exports = (error, req, res, next) => {
     if (error instanceof ValidationError){

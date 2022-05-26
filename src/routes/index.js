@@ -7,14 +7,15 @@ const PacienteController = require("../controllers/paciente");
 const PsicologoController = require("../controllers/psicologo");
 const log = require("../middlewares/log");
 const authLoginValidation = require("../validators/auth/login");
-// const AuthController = require("../controllers/auth");
+const auth = require("../controllers/auth");
+const PsicologoCreateValidation = require("../validators/auth/register");
 // const auth = require("../middlewares/auth");
 
 router.get("/", HomeController.index);
 
 router.get("/psicologos", PsicologoController.index);
 router.get("/psicologos/:id", PsicologoController.show);
-router.post("/psicologos", /*auth,*/ PsicologoController.store);
+router.post("/psicologos", PsicologoCreateValidation,/*auth,*/ PsicologoController.store);
 router.put("/psicologos/:id", PsicologoController.update);
 router.delete("/psicologos/:id", PsicologoController.destroy);
 
@@ -28,10 +29,9 @@ router.delete("/pacientes/:id", PacienteController.destroy);
 router.get("/atendimentos", AtendimentoController.index);
 router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
+router.post("/login", authLoginValidation, auth.login);
 
-router.post("/login", authLoginValidation, AuthController.login);
-
-
+router.post("/psicologos", PsicologoController.store);
 //const authRegisterValidator = require("../validators/auth/register");
 // const authRegisterValidator = require("../validators/auth/register");
 // const authLoginValidator = require("../validators/auth/login");
