@@ -29,8 +29,6 @@ router.get("/atendimentos", AtendimentoController.index);
 router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
 
-<<<<<<< HEAD
-=======
 const authRegisterValidator = require("../validators/auth/register");
 const authLoginValidator = require("../validators/auth/login");
 
@@ -38,5 +36,4 @@ const pacienteValidator = require("../validators/paciente");
 const psicologoValidator = require("../validators/psicologo");
 const atendimentoValidator = require("../validators/atendimento");
 
->>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b
 module.exports = router;
