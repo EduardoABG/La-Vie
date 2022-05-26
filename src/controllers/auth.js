@@ -1,4 +1,4 @@
-const { Usuarios } = require("../models");
+const { Psicologo } = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = require("../configs/secret");
@@ -6,7 +6,7 @@ const secret = require("../configs/secret");
 const AuthController = {
   async login(req, res){
     const { email, senha } = req.body
-    const usuario = await Usuarios.findOne({
+    const usuario = await Psicologo.findOne({
       where:{
         email,
       },
@@ -23,10 +23,11 @@ const AuthController = {
       id: usuario.id, 
       email: usuario.email, 
       nome: usuario.nome,
-      userType: 'user'
-    }
+      userType: 'user',
+    });
     secret.key;
-    );
     return res.json("Logado");
   },
 };
+
+module.exports = AuthController;

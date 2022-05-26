@@ -22,6 +22,10 @@ const Psicologo = db.define(
       type: DataTypes.STRING,
       allowNull: false
     },
+    apresentacao: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   { tableName: "psicologo", timestamps: false, underscored: true }
 );

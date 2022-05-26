@@ -1,4 +1,5 @@
 const { Psicologo } = require("../models");
+const bcrypt = require("bcryptjs")
 
 const PsicologoController = {
   index: async (req, res) => {
@@ -9,7 +10,10 @@ const PsicologoController = {
   show: async (req, res) => {
     const { id } = req.params;
 
-    const psicologo = await Psicologo.findByPk(id);
+    const psicologo = await Psicologo.findAll({
+      where: { id: id },
+      attributes: ["id", "nome", "email", "apresentacao"],
+    });
 
     if (psicologo) {
       return res.json(psicologo);
@@ -21,6 +25,9 @@ const PsicologoController = {
   },
   store: async (req, res) => {
     const { nome, email, senha, apresentacao = [] } = req.body;
+
+    const novaSenha = bcrypt.hashSync(senha, 10)
+
     const novoPsicologo = await Psicologo.create({
       nome,
       email,
@@ -71,7 +78,7 @@ const PsicologoController = {
       return res.status(204).send("");
     }
     res.status(404).json({
-      message: "id não encontrado"
+      message: "id não encontrado",
     });
   },
 };

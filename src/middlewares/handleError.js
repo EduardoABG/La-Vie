@@ -1,5 +1,5 @@
 const { UnauthorizedError } = require("express-jwt");
-const { validationError } = require("express-validation");
+const { ValidationError } = require("express-validation");
 const { ValidationError } = require("sequelize/types");
 
 module.exports = (error, req, res, next) => {
