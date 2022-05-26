@@ -20,7 +20,11 @@ const PacienteController = {
     });
   },
   store: async (req, res) => {
+<<<<<<< HEAD
     const { nome, email, data_nascimento = [] } = req.body;
+=======
+    const { nome, email, data_nascimento } = req.body;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b
     const novoPaciente = await Paciente.create({
       nome,
       email,
@@ -34,7 +38,11 @@ const PacienteController = {
   },
   update: async (req, res) => {
     const { id } = req.params;
+<<<<<<< HEAD
     const { nome, email, data_nascimento = [] } = req.body;
+=======
+    const { nome, email, data_nascimento } = req.body;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b
     const pacienteAtualizado = await Paciente.update(
       {
         nome,
@@ -73,4 +81,8 @@ const PacienteController = {
   },
 };
 
+<<<<<<< HEAD
 module.exports = PacienteController;
+=======
+module.exports = PacienteController;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b

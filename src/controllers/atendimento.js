@@ -7,7 +7,11 @@ const AtendimentoController = {
     res.json(allAtendimentos);
   },
   store: async (req, res) => {
+<<<<<<< HEAD
     const { paciente_id, data_atendimento, observacao = [] } = req.body;
+=======
+    const { paciente_id, data_atendimento, observacao } = req.body;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b
     const novoAtendimento = await Atendimento.create({
       paciente_id,
       data_atendimento,
@@ -32,4 +36,8 @@ const AtendimentoController = {
   },
 };
 
+<<<<<<< HEAD
 module.exports = AtendimentoController;
+=======
+module.exports = AtendimentoController;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b

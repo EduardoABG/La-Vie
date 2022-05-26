@@ -20,7 +20,11 @@ const PsicologoController = {
     });
   },
   store: async (req, res) => {
+<<<<<<< HEAD
     const { nome, email, senha, apresentacao = [] } = req.body;
+=======
+    const { nome, email, senha, apresentacao } = req.body;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b
     const novoPsicologo = await Psicologo.create({
       nome,
       email,
@@ -76,4 +80,8 @@ const PsicologoController = {
   },
 };
 
+<<<<<<< HEAD
 module.exports = PsicologoController;
+=======
+module.exports = PsicologoController;
+>>>>>>> 0d2d58bdae89aeb5d1aae0bbe52a97c08bcf2a4b
