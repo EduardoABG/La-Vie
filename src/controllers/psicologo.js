@@ -26,7 +26,7 @@ const PsicologoController = {
   store: async (req, res) => {
     const { nome, email, senha, apresentacao = [] } = req.body;
 
-    const novaSenha = bcrypt.hashSync(senha, 10)
+    const novaSenha = bcrypt.hashSync(senha, 10);
 
     const novoPsicologo = await Psicologo.create({
       nome,
