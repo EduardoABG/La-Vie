@@ -32,12 +32,5 @@ router.post("/atendimentos", AtendimentoController.store);
 router.post("/login", authLoginValidation, AuthController.login);
 
 router.post("/psicologos", PsicologoController.store);
-//const authRegisterValidator = require("../validators/auth/register");
-// const authRegisterValidator = require("../validators/auth/register");
-// const authLoginValidator = require("../validators/auth/login");
-
-// const pacienteValidator = require("../validators/paciente");
-// const psicologoValidator = require("../validators/psicologo");
-// const atendimentoValidator = require("../validators/atendimento");
 
 module.exports = router;
