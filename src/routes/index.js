@@ -25,7 +25,6 @@ router.post("/pacientes", PacienteController.store);
 router.put("/pacientes/:id", PacienteController.update);
 router.delete("/pacientes/:id", PacienteController.destroy);
 
-
 router.get("/atendimentos", AtendimentoController.index);
 router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
