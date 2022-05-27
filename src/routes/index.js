@@ -19,7 +19,7 @@ router.post("/login", authLoginValidation, authController.login);
 
 router.get("/psicologos", PsicologoController.index);
 router.get("/psicologos/:id", PsicologoController.show);
-router.post("/psicologos", auth, psicologoCreateValidation, PsicologoController.store);
+router.post("/psicologos", psicologoCreateValidation, PsicologoController.store);
 router.put("/psicologos/:id", PsicologoController.update);
 router.delete("/psicologos/:id", PsicologoController.destroy);
 
