@@ -2,7 +2,7 @@ const express = require("express");
 
 const routes = require("./routes");
 const db = require("./database");
-//const handleError = require("./middlewares/handleError");
+const handleError = require("./middlewares/handleError");
 // const authMiddleware = require("./middlewares/auth");
 // const jwtMiddleware = require("./middlewares/jwt");
 
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(authMiddleware);
 
 app.use(routes);
-//app.use(handleError);
+app.use(handleError);
 app.use((req, res) => {
   res.status(404).json({ message: "URL not found" });
 });

@@ -1,5 +1,5 @@
 const { Psicologo } = require("../models");
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcrypt")
 
 const PsicologoController = {
   index: async (req, res) => {
@@ -31,7 +31,7 @@ const PsicologoController = {
     const novoPsicologo = await Psicologo.create({
       nome,
       email,
-      senha,
+      senha: novaSenha,
       apresentacao,
     });
     if (novoPsicologo) {

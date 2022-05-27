@@ -5,8 +5,10 @@ const HomeController = require("../controllers/home");
 const AtendimentoController = require("../controllers/atendimento");
 const PacienteController = require("../controllers/paciente");
 const PsicologoController = require("../controllers/psicologo");
-const log = require("../middlewares/log");
-const authLoginValidation = require("../validators/auth/login");
+// const log = require("../middlewares/log");
+const psicologoCreateValidation = require("../validators/auth/psicologo/create");
+// const handleError = require("../middlewares/handleError");
+// const authLoginValidation = require("../validators/auth/login");
 // const AuthController = require("../controllers/auth");
 // const auth = require("../middlewares/auth");
 
@@ -24,13 +26,11 @@ router.post("/pacientes", PacienteController.store);
 router.put("/pacientes/:id", PacienteController.update);
 router.delete("/pacientes/:id", PacienteController.destroy);
 
-
 router.get("/atendimentos", AtendimentoController.index);
 router.get("/atendimentos/:id", AtendimentoController.show);
 router.post("/atendimentos", AtendimentoController.store);
 
-router.post("/login", authLoginValidation, AuthController.login);
-
+// router.post("/login", authLoginValidation, AuthController.login);
 
 //const authRegisterValidator = require("../validators/auth/register");
 // const authRegisterValidator = require("../validators/auth/register");
