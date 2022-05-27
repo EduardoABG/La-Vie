@@ -3,7 +3,9 @@ const bcrypt = require("bcrypt")
 
 const PsicologoController = {
   index: async (req, res) => {
-    const allPsicologos = await Psicologo.findAll();
+    const allPsicologos = await Psicologo.findAll({
+      attributes: { exclude: ["senha"] },
+    });
 
     res.json(allPsicologos);
   },
