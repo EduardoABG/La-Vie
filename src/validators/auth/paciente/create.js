@@ -1,21 +1,21 @@
 const { validate, Joi: JoiBase } = require("express-validation");
 const { validator: validatorDocument } = require("senha-validator");
 
-const { Cliente } = require("../../models");
+const { Paciente } = require("../../../models");
 
 const Joi = JoiBase.extend(validatorDocument)
   .extend(require("joi-phone-number"))
   .extend(require("joi-postalcode"));
 
-const validClienteExistis = async (value) => {
-  const cliente = await Cliente.findOne({ where: { cpf: value } });
+const validPacienteExistis = async (value) => {
+  const paciente = await Paciente.findOne({ where: { cpf: value } });
 
-  if (cliente) {
+  if (paciente) {
     throw new Joi.ValidationError(
       "string.cpf",
       [
         {
-          message: "Cliente already registered",
+          message: "Paciente already registered",
           path: ["cpf"],
           type: "string.cpf",
           context: {
@@ -38,7 +38,7 @@ module.exports = validate({
       .min(11)
       .max(11)
       .cpf()
-      .external(validClienteExistis)
+      .external(validPacienteExistis)
       .required(),
     data_nascimento: Joi.date().required(),
     telefone: Joi.string()
